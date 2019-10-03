@@ -8,6 +8,8 @@ const int tempSensorPin = 1;
 const int warningLedPin = 2;
 const int warningBuzzerPin = 3;
 
+const float warningTemp = 18.0;
+
 void setup() {
   // put your setup code here, to run once:
   analogReference(EXTERNAL);
@@ -18,6 +20,19 @@ void setup() {
 }
 
 void loop() {
+  float temp = getTemp();
+  if(temp > warningTemp){
+    alertOn();
+  } else {
+    alertOff();
+  }
+  
+  //delay(500);
+  
+  delay(2000);
+}
+
+float getTemp() {
   int reading = analogRead(tempSensorPin);
   Serial.print(reading); Serial.println(" reading");  
  
@@ -43,10 +58,7 @@ void loop() {
   //Serial.print("s = ");
   //Serial.print(now.unixtime() / 86400L);
   //Serial.println("d");
-  alertOn();
-  delay(500);
-  alertOff();
-  delay(500);
+  return temperatureC;
 }
 
 void alertOn() {
