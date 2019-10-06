@@ -1,19 +1,14 @@
-#include "RTClib.h"
-
 #define aref_voltage 3.3
-
-RTC_DS3231 rtc;
 
 const int tempSensorPin = 1;
 const int warningLedPin = 2;
 const int warningBuzzerPin = 3;
 
-const float warningTemp = 18.0;
+const float warningTemp = 0.0;
 
 void setup() {
   // put your setup code here, to run once:
   analogReference(EXTERNAL);
-  //rtc.begin();
   Serial.begin(9600);
   pinMode(warningLedPin, OUTPUT);
   pinMode(warningBuzzerPin, OUTPUT);
@@ -50,14 +45,6 @@ float getTemp() {
 
  // now convert to Fahrenheit
  float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
- Serial.print(temperatureF); Serial.println(" degrees F");
-  // put your main code here, to run repeatedly:
-  //DateTime now = rtc.now();
-  //Serial.print(" since midnight 1/1/1970 = ");
-  //Serial.print(now.unixtime());
-  //Serial.print("s = ");
-  //Serial.print(now.unixtime() / 86400L);
-  //Serial.println("d");
   return temperatureC;
 }
 
