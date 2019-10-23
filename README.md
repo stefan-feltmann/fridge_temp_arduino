@@ -25,4 +25,4 @@ No, but the question and answer format makes it easy to explain things.
 
 **How many times did you seriously burn yourself while soldering?**
 
-Once
+Once.
